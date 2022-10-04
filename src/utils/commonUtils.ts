@@ -34,7 +34,9 @@ const groupBy = <T>(array: Array<T>, key: keyof T): {[key: string]: T[]} => {
 export function getFromInfiniteData<T>(
   infiniteData?: InfiniteData<PageData<T>>,
 ): T[] {
-  if (!infiniteData) return [];
+  if (!infiniteData) {
+    return [];
+  }
   return infiniteData.pages.reduce((prev, curr) => {
     return [...prev, ...curr.data];
   }, [] as T[]);
